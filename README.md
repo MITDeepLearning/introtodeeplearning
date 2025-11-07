@@ -14,7 +14,7 @@ On this Github repo, navigate to the lab folder you want to run (`lab1`, `lab2`,
 ## Running the labs
 Now, to run the labs, open the Jupyter notebook on Colab. Navigate to the "Runtime" tab --> "Change runtime type". In the pop-up window, under "Runtime type" select "Python 3", and under "Hardware accelerator" select "GPU". Go through the notebooks and fill in the `#TODO` cells to get the code to compile for yourself!
 
-## Running the labs locally with uv
+## Running the labs locally with uv (only for PyTorch labs)
 
 If you prefer to run the notebooks locally you can use the project's `uv` environment tool (used in this repo). The basic workflow is:
 
