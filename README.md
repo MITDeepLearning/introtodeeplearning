@@ -14,6 +14,50 @@ On this Github repo, navigate to the lab folder you want to run (`lab1`, `lab2`,
 ## Running the labs
 Now, to run the labs, open the Jupyter notebook on Colab. Navigate to the "Runtime" tab --> "Change runtime type". In the pop-up window, under "Runtime type" select "Python 3", and under "Hardware accelerator" select "GPU". Go through the notebooks and fill in the `#TODO` cells to get the code to compile for yourself!
 
+## Running the labs locally with uv
+
+If you prefer to run the notebooks locally you can use the project's `uv` environment tool (used in this repo). The basic workflow is:
+
+1. Open PowerShell and change to the repository root directory:
+
+```powershell
+cd \path\to\introtodeeplearning
+```
+
+2. (Optional) Verify your Python version matches the project's `requires-python` (see `pyproject.toml`):
+
+```powershell
+python --version
+```
+
+3. Install the project dependencies into the `uv` environment. The dependencies and any custom package indexes are declared in `pyproject.toml`. To install everything at once run:
+
+```powershell
+uv sync
+```
+
+This will install all dependencies listed in `pyproject.toml` and automatically use any indexes defined there (for example, the PyTorch CUDA index declared in this repo).
+
+Notes:
+- If `cu126` is incompatible with your machine, simply edit `pyproject.toml` and change the `url` value to the desired CUDA tag. For example, to use CUDA 12.1 change the URL to:
+
+```toml
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu121"
+```
+
+You can use the PyTorch get-started selector (https://pytorch.org/get-started/locally/) to find the appropriate index URL.
+
+This keeps the index configuration in a single place and makes it easy to switch CUDA versions for all contributors.
+
+4. Start Jupyter Notebook or JupyterLab from the `uv` environment:
+
+```powershell
+uv run jupyter notebook
+# or
+uv run jupyter lab
+```
 
 ### MIT Deep Learning package
 You might notice that inside the labs we install the `mitdeeplearning` python package from the Python Package repository:
